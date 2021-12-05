@@ -10,15 +10,18 @@ function EventsInDatabase() {
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
-  return (<div className={styles.items}>
+  return (<div className={styles.container}>
 
     {data.map((event) => (
-      <div key={event.event_id}>
+      <div key={event.event_id} className={styles.event}>
         <div>
-           {event.created_at} 
+           {event.event_id}
         </div>
         <div>
            {event.title}
+        </div>
+        <div>
+           {event.created_at.split('T')[0]} 
         </div>
         </div> 
       ))}
@@ -28,14 +31,14 @@ function EventsInDatabase() {
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className={styles.page}>
       <Head>
         <title>Database 2</title>
         <meta name="description" content="Database lesson 2" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.page}>
+      <main>
         <h1>
           Database lesson 2
         </h1>
