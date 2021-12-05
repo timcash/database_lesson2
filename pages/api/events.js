@@ -3,7 +3,7 @@ const conn = new PSDB('main')
 
 export default async function handler(req, res) {
     try {
-        const [rows, fields] = await conn.query('select * from events')
+        const [rows] = await conn.query('select * from events')
         res.status(200).json(rows)
     } catch (err) {
         console.log(err)

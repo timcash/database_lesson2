@@ -2,7 +2,9 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import useSWR from 'swr'
 
-const fetcher = (url) => fetch(url).then((r) => r.json())
+function fetcher(url) {
+  return fetch(url).then((r) => r.json())
+}
 
 // Return a list of events as react elements
 function EventsInDatabase() {
@@ -15,16 +17,16 @@ function EventsInDatabase() {
     {data.map((event) => (
       <div key={event.event_id} className={styles.event}>
         <div>
-           {event.event_id}
+          {event.event_id}
         </div>
         <div>
-           {event.title}
+          {event.title}
         </div>
         <div>
-           {event.created_at.split('T')[0]} 
+          {event.created_at.split('T')[0]}
         </div>
-        </div> 
-      ))}
+      </div>
+    ))}
   </div>
   )
 }
